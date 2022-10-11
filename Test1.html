@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <title></title>
+    <style>
+        .card {
+            border: 1px solid #a7b8c7;
+        }
+
+        .card-header {
+            padding: 0.3rem 0.8rem;
+            border-bottom: 1px solid #a7b8c7;
+        }
+
+        .card-body {
+            padding: 0.5rem;
+        }
+    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script type="text/javascript">
+
+
+        window.chrome.webview.addEventListener('message', event => {
+            //alert(event.data);
+            convertToObj(event.data);
+        });
+        window.chrome.webview.removeEventListener('message', event);
+
+        function convertToObj(text) {
+            var o = new Object(text);
+
+            text = text.substring(1, text.length - 1);
+            var x = text.split(',');
+            //var jsonStr= JSON.parse(text);
+
+            for (var i = 0; i < x.length; i++) {
+
+                var s = x[i].split(':');
+                //alert(s[0]);
+                //alert(s[1]);
+                var key = s[0];
+                key = key.substring(1, key.length - 1);
+                document.getElementById(key).value = s[1];
+                document.getElementById(key + '1').innerHTML = s[1];
+
+            }
+        }
+
+        function ShowWinFormsMessage() {
+            ary = ["NAME", "DOB", "SSN", "GENDER"];
+
+            var res = "{";
+            for (var i = 0; i < ary.length; i++) {
+                var val = document.getElementById(ary[i]).value
+                //alert(typeof (obj[i]));
+                res += ary[i];
+                res += ":";
+                res += val;
+                res += ",";
+            }
+            res = res.substring(0, res.length - 1);
+            res += "}";
+            alert("111111");
+            form_list = $("#f1").serialize();
+            alert("22222");
+            sendThisItem(form_list);
+        }
+
+        function tableToJson(table) {
+            alert("1111");
+            var data = []; // first row needs to be headers var headers = [];
+            for (var i = 0; i < table.rows[0].cells.length; i++) {
+                headers[i] = table.rows[0].cells[i].innerHTML.toLowerCase().replace(/ /gi, '');
+            }
+            alert("1111");
+            // go through cells
+            for (var i = 1; i < table.rows.length; i++) {
+                var tableRow = table.rows[i]; var rowData = {};
+                for (var j = 0; j < tableRow.cells.length; j++) {
+                    rowData[headers[j]] = tableRow.cells[j].innerHTML;
+                } data.push(rowData);
+            }
+            alert("1111");
+            sendThisItem(data);
+            return data;
+        }
+    </script>
+
+</head>
+
+<body>
+    <div class="card">
+
+        <div class="col-md-3" style="padding-right: 0;">
+            <div style="border: 1px solid #e4e3e9;padding: 5px;">
+                <div class="row">
+                    <span class="col-md-5">Name: </span>
+                    <strong class="col-md-7">
+                        <label type="text" id="NAME1"> </label><br>
+                    </strong>
+                    <span class="col-md-5">DOB: </span>
+                    <strong class="col-md-7">
+                        <label type="text" id="DOB1"> </label><br>
+                    </strong>
+                    <span class="col-md-5">SSN: </span>
+                    <strong class="col-md-7">
+                        <label type="text" id="SSN1"> </label><br>
+                    </strong>
+                    <span class="col-md-5">Gender: </span>
+                    <strong class="col-md-7">
+                        <label type="text" id="GENDER1"> </label><br>
+                    </strong>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3" style="padding-right: 0;">
+        <div style="border: 1px solid #e4e3e9;padding: 5px;">
+            <div class="row">
+                <!--<span class="col-md-5">Name: </span>
+                <strong class="col-md-7">
+                    <input type="text" id="NAME" /> <br>
+                </strong>
+                <span class="col-md-5">DOB: </span>
+                <strong class="col-md-7">
+                    <input type="text" id="DOB" /> <br>
+                </strong>
+                <span class="col-md-5">SSN: </span>
+                <strong class="col-md-7">
+                    <input type="text" id="SSN" /> <br>
+                </strong>
+                <span class="col-md-5">Gender: </span>
+                <strong class="col-md-7">
+                    <input type="text" id="GENDER" /> <br>
+                </strong>-->
+                <!--<table id="testtable">
+                    <form id=f1>
+                    <tr><td>Name</td><td><input type=text id="NAME"></td></tr>
+                    <tr><td>DOB</td><td><input type=text id="DOB"></td></tr>
+                    <tr><td>SSN</td><td><input type=text id="SSN"></td></tr>
+                    <tr><td>GENDER</td><td><input type=text id="GENDER"></td></tr>
+                    </form>
+                </table>-->
+            </div>
+        </div>
+    </div>
+    <input type="button" value="ToWinform" id="b1" onclick="ShowWinFormsMessage1(new Array('NAME',  'SSN', 'GENDER','DOB'))" />
+    <div class="card">
+        <center><h1><b>Upper is Test</b></h1></center>
+    </div>
+    <!--<section class="content">
+        <div class="container-fluid">
+            <div class="card">
+
+                <div class="card-header">
+                    <h3 class="card-title">Member Demographics</h3>
+                </div>
+
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3" style="padding-right: 0;">
+                            <div style="border: 1px solid #e4e3e9;padding: 5px;">
+                                <div class="row">
+                                    <strong class="col-md-12" style="color:#45aeca;text-align: center;">Demographics</strong>
+                                    <span class="col-md-5">Name: </span>
+                                    <strong class="col-md-7">
+                                        <input type="text" id="m1" />
+                                    </strong>
+                                    <span class="col-md-5">DOB: </span>
+                                    <strong class="col-md-7">
+                                        <input type="text" id="m2" />
+                                    </strong>
+                                    <span class="col-md-5">SSN: </span>
+                                    <strong class="col-md-7">
+                                        <input type="text" id="m3" />
+                                    </strong>
+                                    <span class="col-md-5">Gender: </span>
+                                    <strong class="col-md-7">
+                                        <input type="text" id="m4" />
+                                    </strong>
+                                    <span class="col-md-5">Marital: </span>
+                                    <strong class="col-md-7">
+                                        <input type="text" id="m5" />
+                                    </strong>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-md-6">
+                            <div style="border: 1px solid #e4e3e9;padding: 5px;min-height: 152px;">
+                                <div class="row">
+                                    <strong class="col-md-12" style="color:#45aeca;text-align: center;">Address</strong>
+                                    <span class="col-md-2">Physical: </span>
+                                    <strong class="col-md-10">
+                                        <input type="text" id="m6" />
+                                    </strong>
+                                    <span class="col-md-2">County: </span>
+                                    <strong class="col-md-10">
+                                        <input type="text" id="m7" />
+                                    </strong><br>
+                                    <span class="col-md-2">Billing: </span>
+                                    <strong class="col-md-10">
+                                        <input type="text" id="m8" />
+                                    </strong><br>
+                                    <span class="col-md-2">Mailing: </span>
+                                    <strong class="col-md-10">
+                                        <input type="text" id="m9" />
+                                    </strong>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-3" style="padding-left: 0;">
+                            <div style="border: 1px solid #e4e3e9;padding: 5px;min-height: 152px;">
+                                <div class="row">
+                                    <strong class="col-md-12" style="color:#45aeca;text-align: center;">Contact Info</strong>
+                                    <span class="col-md-2">Email: </span>
+                                    <strong class="col-md-10">
+                                        <input type="text" id="m10" />
+                                    </strong><br>
+                                    <span class="col-md-2">Phone: </span>
+                                    <strong class="col-md-10">
+                                        <input type="text" id="m11" />
+                                    </strong>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 bg-light text-right">
+                        <button type="button" class="btn btn-primary" value="Save" onclick="SaveMember()">Save</button>
+                    </div>-->
+    <!--</div>-->
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">NAME</th>
+                <th scope="col">DOB</th>
+                <th scope="col">GENDER</th>
+                <th scope="col">SSN</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td><input type=text id="NAME"></td>
+                <td><input type=text id="DOB"></td>
+                <td><input type=text id="GENDER"></td>
+                <td><input type=text id="SSN"></td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+                <td>@fat</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+                <td>@twitter</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div>
+        <h1>the rest part are the test result => generating table using json string </h1>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title text-primary">Table is below</h4>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-10" style="padding-right: 0;">
+                    <div style="border: 1px solid #e4e3e9;">
+                        <div class="row">
+                            <div class="col-md-10" style="padding-right: 0;">
+                                <div style="border: 1px solid #e4e3e9;">
+                                    <table  class="table table-bordered">
+                                        <thead>
+                                            <tr class="info">
+                                                <th>userId</th>
+                                                <th>id</th>
+                                                <th>title</th>
+                                                <th>completed</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody id="html-data-table">
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

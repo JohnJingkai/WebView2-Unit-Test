@@ -1,0 +1,355 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>test</title>
+    <style>
+        .card {
+            border: 1px solid #a7b8c7;
+        }
+        .card-header {
+            padding: 0.3rem 0.8rem;
+            border-bottom: 1px solid #a7b8c7;
+        }
+        .card-body {
+            padding: 0.5rem;
+        }
+
+        table {
+            border-collapse: separate !important;
+            border-spacing: 0;
+            width: 600px;
+            margin: 30px;
+        }
+
+        .bordered {
+            border: solid #ccc 1px;
+            -moz-border-radius: 6px;
+            -webkit-border-radius: 6px;
+            border-radius: 7px;
+            -webkit-box-shadow: 0 1px 1px #ccc;
+            -moz-box-shadow: 0 1px 1px #ccc;
+            box-shadow: 0 1px 1px #ccc;
+        }
+
+
+
+ 
+    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body onload="renderDataInTheTable()">
+
+    <!--success danger info warning active -->
+
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title text-primary">Member Demographics</h4>
+            </div>
+            <div class="card-body ">
+                <div class="row">
+                    <div class="col-md-4" style="padding-right: 0;">
+                        <div style="border: 1px solid #e4e3e9; padding: 5px; border-radius: 12px;">
+                            <div class="row">
+
+                                <span class="col-md-5">Group Number: </span>
+                                <strong class="col-md-7">
+                                    <label id="GroupNumber">test</label>
+                                </strong>
+
+                                <span class="col-md-5">Group Name: </span>
+                                <strong class="col-md-7">
+                                    <label id="GroupName">test</label>
+                                </strong>
+
+                                <span class="col-md-5">Plan ID: </span>
+                                <strong class="col-md-7">
+                                    <label id="PlanID">test</label>
+                                </strong>
+
+                                <span class="col-md-5">Policy ID: </span>
+                                <strong class="col-md-7">
+                                    <label id="PolicyID">test</label>
+                                </strong>
+
+                                <span class="col-md-5">Effective Date: </span>
+                                <strong class="col-md-7">
+                                    <label id="EffectiveDate">test</label>
+                                </strong>
+
+                                <span class="col-md-5">Expiration Date: </span>
+                                <strong class="col-md-7">
+                                    <label id="ExpirationDate">test</label>
+                                </strong>
+
+                                <span class="col-md-5">LOB: </span>
+                                <strong class="col-md-7">
+                                    <label id="LOB">test</label>
+                                </strong>
+
+                                <span class="col-md-5">Smoking Status: </span>
+                                <strong class="col-md-7">
+                                    <label id="SmokingStatus">test</label>
+                                </strong>
+
+                                <span class="col-md-5">COBRA Term Date: </span>
+                                <strong class="col-md-7">
+                                    <label id="COBRATermDate">test</label>
+                                </strong>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-md-4" style="padding-right: 0;">
+                        <div style="border: 1px solid #e4e3e9; padding: 5px; border-radius: 12px;">
+                            <div class="row">
+
+                                <span class="col-md-5">Group Number: </span>
+                                <strong class="col-md-7">
+                                    <label id="GroupNumber">test</label>
+                                </strong>
+
+                                <span class="col-md-5">Group Name: </span>
+                                <strong class="col-md-7">
+                                    <label id="GroupName">test</label>
+                                </strong>
+
+                                <span class="col-md-5">Plan ID: </span>
+                                <strong class="col-md-7">
+                                    <label id="PlanID">test</label>
+                                </strong>
+
+                                <span class="col-md-5">Policy ID: </span>
+                                <strong class="col-md-7">
+                                    <label id="PolicyID">test</label>
+                                </strong>
+
+                                <span class="col-md-5">Effective Date: </span>
+                                <strong class="col-md-7">
+                                    <label id="EffectiveDate">test</label>
+                                </strong>
+
+                                <span class="col-md-5">Expiration Date: </span>
+                                <strong class="col-md-7">
+                                    <label id="ExpirationDate">test</label>
+                                </strong>
+
+                                <span class="col-md-5">LOB: </span>
+                                <strong class="col-md-7">
+                                    <label id="LOB">test</label>
+                                </strong>
+
+                                <span class="col-md-5">Smoking Status: </span>
+                                <strong class="col-md-7">
+                                    <label id="SmokingStatus">test</label>
+                                </strong>
+
+                                <span class="col-md-5">COBRA Term Date: </span>
+                                <strong class="col-md-7">
+                                    <label id="COBRATermDate">test</label>
+                                </strong>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4" style="padding-right: 0;">
+                        <div style="border: 1px solid #e4e3e9; padding: 5px; border-radius: 12px;">
+                            <div class="row">
+
+                                <span class="col-md-5">Group Number: </span>
+                                <strong class="col-md-7">
+                                    <label id="GroupNumber">test</label>
+                                </strong>
+
+                                <span class="col-md-5">Group Name: </span>
+                                <strong class="col-md-7">
+                                    <label id="GroupName">test</label>
+                                </strong>
+
+                                <span class="col-md-5">Plan ID: </span>
+                                <strong class="col-md-7">
+                                    <label id="PlanID">test</label>
+                                </strong>
+
+                                <span class="col-md-5">Policy ID: </span>
+                                <strong class="col-md-7">
+                                    <label id="PolicyID">test</label>
+                                </strong>
+
+                                <span class="col-md-5">Effective Date: </span>
+                                <strong class="col-md-7">
+                                    <label id="EffectiveDate">test</label>
+                                </strong>
+
+                                <span class="col-md-5">Expiration Date: </span>
+                                <strong class="col-md-7">
+                                    <label id="ExpirationDate">test</label>
+                                </strong>
+
+                                <span class="col-md-5">LOB: </span>
+                                <strong class="col-md-7">
+                                    <label id="LOB">test</label>
+                                </strong>
+
+                                <span class="col-md-5">Smoking Status: </span>
+                                <strong class="col-md-7">
+                                    <label id="SmokingStatus">test</label>
+                                </strong>
+
+                                <span class="col-md-5">COBRA Term Date: </span>
+                                <strong class="col-md-7">
+                                    <label id="COBRATermDate">test</label>
+                                </strong>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title text-primary">Covered Persons</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-11" style="padding-right: 0;">
+                        <!--<div style="border: 1px solid #e4e3e9;">-->
+
+                            <table class="table table-bordered" style="border-radius: 6px;" id="table-Covered-Persons">
+                                <thead>
+                                    <tr class="info">
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Birth Date</th>
+                                        <th>Sex</th>
+                                        <th>SSN</th>
+                                        <th>Marital Status</th>
+                                        <th>Relationship</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="success">
+                                        <td>test</td>
+                                        <td>test</td>
+                                        <td>test</td>
+                                        <td>test</td>
+                                        <td>test</td>
+                                        <td>test</td>
+                                        <td>test</td>
+                                        <!--<td>test</td>-->
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        <!--</div>-->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title text-primary">Brokers</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-11" style="padding-right: 0;">
+                        <!--<div style="border: 1px solid #e4e3e9;">-->
+
+                            <table class="table table-bordered" style="border-radius: 6px;" id="table-Brokers">
+                                <thead>
+                                    <tr class="info">
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>BOR Expiration Date</th>
+                                        <th>Acct Executive</th>
+                                        <th>Email Address</th>
+                                        <th>Phone</th>
+                                        <th>Broker Number</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="success">
+                                        <td>test</td>
+                                        <td>test</td>
+                                        <td>test</td>
+                                        <td>test</td>
+                                        <td>test</td>
+                                        <td>test</td>
+                                        <td>test</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        <!--</div>-->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title text-primary">ID Card Request History</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-11" style="padding-right: 0;">
+                        <!--<div style="border: 1px solid #e4e3e9;">-->
+
+                            <table class="table table-bordered" style="border-radius: 6px;" id="table-IDCard">
+                                <thead>
+                                    <tr class="info">
+                                        <th>Request ID</th>
+                                        <th>Status</th>
+                                        <th>Type</th>
+                                        <th>Mail To</th>
+                                        <th>Reason Code</th>
+                                        <th>Policy Number</th>
+                                        <th>Source File</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="success">
+                                        <td>test</td>
+                                        <td>test</td>
+                                        <td>test</td>
+                                        <td>test</td>
+                                        <td>test</td>
+                                        <td>test</td>
+                                        <td>test</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        <!--</div>-->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+ 
+
+</body>
+</html>
+
